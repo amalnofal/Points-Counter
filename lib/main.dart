@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:points_counter/cubits/counter_cubit.dart';
 import 'views/points_counter_view.dart';
 
 void main() {
@@ -12,7 +14,10 @@ class PointsCounterApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: PointsCounterView(),
+      home: BlocProvider(
+        create: (context) => CounterCubit(),
+        child: PointsCounterView(),
+      ),
     );
   }
 }
